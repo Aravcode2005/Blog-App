@@ -1,0 +1,24 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "An Online Blogging App",
+  "homepage": "https://github.com/Aravcode2005/Blog-App#readme",
+  "bugs": {
+    "url": "https://github.com/Aravcode2005/Blog-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aravcode2005/Blog-App.git"
+  },
+  "license": "ISC",
+  "author": "Arav",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  }
+}
