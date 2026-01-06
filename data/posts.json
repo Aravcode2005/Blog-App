@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "description": "post1",
+      "content": "Hi this is the first post,it is about a travel blog "
+    },
+    {
+      "id": 2,
+      "description": "post2",
+      "content": "Hi this is the second post this is about food and cuisines all over the world"
+    },
+
+    {
+      "id": 3,
+      "description": "post3",
+      "content": "Hi this is the third post this is about sex all over the world"
+    }
+  ]
+}
