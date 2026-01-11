@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=pageTitle%></title>
+  
+</head>
+<body>
+
+    <div class="main-container">
+    <form method="post">
+    <input type="text"  name="inputtext"  placeholder="Enter the title" action="/newpost"/>
+    <button>Enter title</button>
+    </form>
+    <form method="post">
+   <textarea id="text-area" name="texxtarea" rows="4" cols="50" action="/newpost">Enter your comments here </textarea>
+   <button>Enter text</button>
+   </form>
+   </div>
+</body>
+</html>
