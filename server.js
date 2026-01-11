@@ -19,7 +19,9 @@ function getpostfromfile() {
       return [];
    }
 }
+
 const arr = getpostfromfile();
+const postcount=arr.length;
 function getpostsbyid(id) {
    for (let i = 0; i < arr.length; i++) {
       if (arr[i].id === id) {
@@ -60,7 +62,8 @@ app.get('/admin', (req, res, next) => {
         return;
    }
    res.render("dynamicadmin", {
-      pageTitle: "Adminpanel"
+      pageTitle: "Adminpanel",
+      POST:postcount,
    });
 });
 app.post('/login', (req, res, next) => {
@@ -74,9 +77,7 @@ app.post('/login', (req, res, next) => {
    } catch (error) {
       console.log("Laadle" + error.message);
    }
- 
 });
-
 app.get('/',(req,res,next)=>{
 res.status(404).send("Page not found");
 });
