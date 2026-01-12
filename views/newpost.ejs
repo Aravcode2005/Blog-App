@@ -7,16 +7,23 @@
   
 </head>
 <body>
-
     <div class="main-container">
-    <form method="post">
-    <input type="text"  name="inputtext"  placeholder="Enter the title" action="/newpost"/>
-    <button>Enter title</button>
+    <form id="usercontent" method="POST" action="write">
+
+     <p>
+    <label for="userid">Enter the id:</label>
+    <input type="text" id="inputtaext"  name="inputtaext" placeholder="Enter the id"/>
+    </p>
+    <p>
+    <label for="username">Enter the title:</label>
+    <input type="text" id="inputtext"  name="inputtext" placeholder="Enter the title"/>
+    </p>
+    <p>
+    <label for="textarea">Enter the text</label>
+    <textarea id="text-area" id="texxtarea" name="texxtarea" rows="4" cols="50" >Enter your comments here </textarea>
+    </p>
+    <input type="submit" value="Submit" >
     </form>
-    <form method="post">
-   <textarea id="text-area" name="texxtarea" rows="4" cols="50" action="/newpost">Enter your comments here </textarea>
-   <button>Enter text</button>
-   </form>
    </div>
 </body>
 </html>

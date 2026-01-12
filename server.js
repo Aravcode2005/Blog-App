@@ -20,43 +20,43 @@ function getpostfromfile() {
    }
 }
 const arr = getpostfromfile();
-function createpost(){
-const newid=arr.length+1;
-arr.push(newid);
-}
+
 const postcount = arr.length;
-function getpostsbyid(id) {
+function getpostsbytitle(title) {
    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].id === id) {
+      if (arr[i].title === title) {
          return arr[i];
       }
    }
    return null;
 }
 app.get('/', (req, res, next) => {
-   res.status(404).send("Page not found");
-   next();
+   res.redirect('/HomePage');
 });
-
 app.get('/HomePage', (req, res, next) => {
    res.render("index", {
       pageTitle: "HomePage",
       posts: arr
    });
 });
-app.get('/Posts/:id', (req, res, next) => {
-   const Postid = req.params.id;
-   const Post = getpostsbyid(parseInt(Postid));
-   if (!Post) {
-      return res.status(404).send('Page not found');
+app.get('/Posts/:title', (req, res, next) => {
+   try {
+
+      const Posttitle = req.params.title;
+      const Post = getpostsbytitle(Posttitle);
+      if (!Post) {
+         return res.status(404).send('Page not found');
+      }
+      res.render("post",
+         {
+            pageTitle: Post.description,
+            post: Post,
+            link: "/HomePage",
+         })
+   } catch (error) {
+    console.log(error.message);
    }
-   res.render("post",
-      {
-         pageTitle: Post.description,
-         post: Post,
-         link: "/HomePage",
-         image: Post.image
-      })
+
 });
 app.get('/login', (req, res, next) => {
    res.render("login", {
@@ -86,18 +86,30 @@ app.post('/login', (req, res, next) => {
    }
 });
 
-app.get('/write',(req,res,next)=>{
-
-res.render("newpost",
+app.get('/write', (req, res, next) => {
+   res.render("newpost",
       {
          pageTitle: "Userpage"
       });
 });
-
 app.post('/write', (req, res, next) => {
-   const {inputtext} =req.body;
-   console.log({ inputtext });
+   const { inputtext, texxtarea, inputtaext } = req.body;
+   const obj = {
+      "title": inputtaext,
+      "description": inputtext,
+      "content": texxtarea,
+   }
+   arr.push(obj);
+   let fileData;
+   try {
+      const fileContent = fs.readFileSync('./data/posts.json');
+      fileData = JSON.parse(fileContent);
+   } catch (error) {
+      fileData = { posts: [] };
+   }
+   fileData.posts.push(obj);
+   fs.writeFileSync('./data/posts.json', JSON.stringify(fileData, null, 2));
+   res.redirect('/HomePage');
 });
-
 console.log('http://localhost:3000')
 app.listen(3000);
